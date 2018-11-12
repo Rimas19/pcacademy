@@ -1,33 +1,34 @@
-let textbox = document.getElementById('textarea')
+const textbox = document.getElementById('textarea');
 class TextArea {
-    resizeTextarea() {
+
+    // constructor(maxrows, minrows) {
+    //     this.maxrows = maxrows;
+    //     this.minrows = minrows;
+    // }
+
+    resize() {
         textarea.addEventListener("input", function () {
-            let maxrows = 5
-            let minrows = 2
-            let overflOn = 'auto'
-            let overfOff = 'hidden'
-            let txt = textbox.value
-            let rows
-            let textarea = document.getElementById('textarea')
-            textarea.style.overflow = overfOff
-            let arraytxt = txt.split('\n')
-            if (arraytxt <= minrows) {
+            let maxrows = 5;
+            let minrows = 2;
+            let overflowOn = 'auto'
+            let overflowOff = 'hidden'
+            let textbox = document.getElementById('textarea')
+            let enteredtext = textbox.value;
+            let cols = textbox.cols;
+            let arraytxt = enteredtext.split('\n');
+            let rows = arraytxt.length;
+            textbox.style.overflow = overflowOff
+            for (let i = 0; i < arraytxt.length; i++)
+                rows += parseInt(arraytxt[i].length / cols);
+            if (rows < minrows) {
                 rows = minrows
-            } else {
-                rows = arraytxt.length
             }
-            if (rows > maxrows) {
-                textarea.style.overflow = overflOn
-                textbox.rows = maxrows
-            } else {
-                textbox.rows = rows
-            }
+            if (rows > maxrows) textbox.rows = maxrows, textbox.style.overflow = overflowOn;
+            else textbox.rows = rows;
         });
     }
 }
 
-const test = new TextArea();
-textbox.addEventListener('keyup', test.resizeTextarea);
-
-
+let expandTextarea = new TextArea(5, 2);
+textbox.addEventListener('input', expandTextarea.resize);
 

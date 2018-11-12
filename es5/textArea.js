@@ -12,29 +12,32 @@ var TextArea = function () {
     }
 
     _createClass(TextArea, [{
-        key: 'resizeTextarea',
-        value: function resizeTextarea() {
+        key: 'resize',
+
+
+        // constructor(maxrows, minrows) {
+        //     this.maxrows = maxrows;
+        //     this.minrows = minrows;
+        // }
+
+        value: function resize() {
             textarea.addEventListener("input", function () {
                 var maxrows = 5;
                 var minrows = 2;
-                var overflOn = 'auto';
-                var overfOff = 'hidden';
-                var txt = textbox.value;
-                var rows = void 0;
-                var textarea = document.getElementById('textarea');
-                textarea.style.overflow = overfOff;
-                var arraytxt = txt.split('\n');
-                if (arraytxt <= minrows) {
+                var overflowOn = 'auto';
+                var overflowOff = 'hidden';
+                var textbox = document.getElementById('textarea');
+                var enteredtext = textbox.value;
+                var cols = textbox.cols;
+                var arraytxt = enteredtext.split('\n');
+                var rows = arraytxt.length;
+                textbox.style.overflow = overflowOff;
+                for (var i = 0; i < arraytxt.length; i++) {
+                    rows += parseInt(arraytxt[i].length / cols);
+                }if (rows < minrows) {
                     rows = minrows;
-                } else {
-                    rows = arraytxt.length;
                 }
-                if (rows > maxrows) {
-                    textarea.style.overflow = overflOn;
-                    textbox.rows = maxrows;
-                } else {
-                    textbox.rows = rows;
-                }
+                if (rows > maxrows) textbox.rows = maxrows, textbox.style.overflow = overflowOn;else textbox.rows = rows;
             });
         }
     }]);
@@ -42,5 +45,5 @@ var TextArea = function () {
     return TextArea;
 }();
 
-var test = new TextArea();
-textbox.addEventListener('keyup', test.resizeTextarea);
+var expandTextarea = new TextArea(5, 2);
+textbox.addEventListener('input', expandTextarea.resize);

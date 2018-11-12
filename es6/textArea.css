@@ -1,9 +1,4 @@
-#textarea {
-	position: fixed;
-	border: 1 none rgb(116, 116, 119);
-	overflow: hidden;
-	padding: 0;
-	outline: none;
-	background-color: #f2f4fa;
-	overflow: hidden;
-}
+#textarea{
+    font-size: 20px;
+    } 
+
