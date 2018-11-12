@@ -1,34 +1,33 @@
-const textbox = document.getElementById('textarea');
+const TextBox = document.getElementById('textarea');
 class TextArea {
 
     // constructor(maxrows, minrows) {
     //     this.maxrows = maxrows;
     //     this.minrows = minrows;
     // }
-
-    resize() {
+    Resize() {
         textarea.addEventListener("input", function () {
-            let maxrows = 5;
-            let minrows = 2;
-            let overflowOn = 'auto'
-            let overflowOff = 'hidden'
-            let textbox = document.getElementById('textarea')
-            let enteredtext = textbox.value;
-            let cols = textbox.cols;
-            let arraytxt = enteredtext.split('\n');
-            let rows = arraytxt.length;
-            textbox.style.overflow = overflowOff
-            for (let i = 0; i < arraytxt.length; i++)
-                rows += parseInt(arraytxt[i].length / cols);
-            if (rows < minrows) {
-                rows = minrows
+            let Maxrows = 5;
+            let Minrows = 2;
+            let OverflowOn = 'auto'
+            let OverflowOff = 'hidden'
+            let TextBox = document.getElementById('textarea')
+            let EnteredText = TextBox.value;
+            let cols = TextBox.cols;
+            let Arraytxt = EnteredText.split('\n');
+            let rows = Arraytxt.length;
+            TextBox.style.overflow = OverflowOff
+            for (let i = 0; i < Arraytxt.length; i++)
+                rows += parseInt(Arraytxt[i].length / cols);
+            if (rows < Minrows) {
+                rows = Minrows
             }
-            if (rows > maxrows) textbox.rows = maxrows, textbox.style.overflow = overflowOn;
-            else textbox.rows = rows;
+            if (rows > Maxrows) TextBox.rows = Maxrows, TextBox.style.overflow = OverflowOn;
+            else TextBox.rows = rows;
         });
     }
 }
 
-let expandTextarea = new TextArea(5, 2);
-textbox.addEventListener('input', expandTextarea.resize);
+let ExpandTextarea = new TextArea(5, 2);
+TextBox.addEventListener('input', ExpandTextarea.Resize);
 
