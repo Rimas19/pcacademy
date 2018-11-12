@@ -14,15 +14,18 @@ class TextArea {
             let cols = textBox.cols;
             let arrayText = enteredText.split('\n');
             let rows = arrayText.length;
-
             textBox.style.overflow = overflowOff
-            for (let i = 0; i < arrayText.length; i++)
+            for (let i = 0; i < arrayText.length; i++) {
                 rows += parseInt(arrayText[i].length / cols);
-            if (rows < this.minRows) {
+            }
+            if (rows > this.maxRows) {
+                textBox.rows = this.maxRows, textBox.style.overflow = overflowOn;
+            } else if (rows < this.minRows) {
                 rows = this.minRows
             }
-            if (rows > this.maxRows) textBox.rows = this.maxRows, textBox.style.overflow = overflowOn;
-            else textBox.rows = rows;
+            else {
+                textBox.rows = rows;
+            }
         });
     }
 }
