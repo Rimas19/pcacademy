@@ -13,17 +13,17 @@ class TextArea {
             let OverflowOff = 'hidden'
             let TextBox = document.getElementById('textarea')
             let EnteredText = TextBox.value;
-            let cols = TextBox.cols;
+            let Cols = TextBox.cols;
             let Arraytxt = EnteredText.split('\n');
-            let rows = Arraytxt.length;
+            let Rows = Arraytxt.length;
             TextBox.style.overflow = OverflowOff
             for (let i = 0; i < Arraytxt.length; i++)
-                rows += parseInt(Arraytxt[i].length / cols);
-            if (rows < Minrows) {
-                rows = Minrows
+                Rows += parseInt(Arraytxt[i].length / Cols);
+            if (Rows < Minrows) {
+                Rows = Minrows
             }
-            if (rows > Maxrows) TextBox.rows = Maxrows, TextBox.style.overflow = OverflowOn;
-            else TextBox.rows = rows;
+            if (Rows > Maxrows) TextBox.rows = Maxrows, TextBox.style.overflow = OverflowOn;
+            else TextBox.rows = Rows;
         });
     }
 }
