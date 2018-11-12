@@ -30,6 +30,6 @@ class TextArea {
     }
 }
 
-let ExpandTextarea = new TextArea(5, 2);
-textBox.addEventListener('input', ExpandTextarea.resizeTextarea());
+let expandTextarea = new TextArea(5, 2);
+textBox.addEventListener('input', expandTextarea.resizeTextarea());
 
