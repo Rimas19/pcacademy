@@ -1,32 +1,32 @@
-TextBox = document.getElementById('textarea');
+const textBox = document.getElementById('textarea');
 class TextArea {
     constructor(maxrows, minrows) {
-        this.Maxrows = maxrows
-        this.Minrows = minrows
+        this.maxRows = maxrows
+        this.minRows = minrows
         this.resizeTextarea();
     }
     resizeTextarea() {
         textarea.addEventListener("input", () => {
-            let OverflowOn = 'auto'
-            let OverflowOff = 'hidden'
-            let TextBox = document.getElementById('textarea')
-            let EnteredText = TextBox.value;
-            let Cols = TextBox.cols;
-            let Arraytxt = EnteredText.split('\n');
-            let Rows = Arraytxt.length;
+            let overflowOn = 'auto'
+            let overflowOff = 'hidden'
+            let textBox = document.getElementById('textarea')
+            let enteredText = textBox.value;
+            let cols = textBox.cols;
+            let arrayText = enteredText.split('\n');
+            let rows = arrayText.length;
 
-            TextBox.style.overflow = OverflowOff
-            for (let i = 0; i < Arraytxt.length; i++)
-                Rows += parseInt(Arraytxt[i].length / Cols);
-            if (Rows < this.Minrows) {
-                Rows = this.Minrows
+            textBox.style.overflow = overflowOff
+            for (let i = 0; i < arrayText.length; i++)
+                rows += parseInt(arrayText[i].length / cols);
+            if (rows < this.minRows) {
+                rows = this.minRows
             }
-            if (Rows > this.Maxrows) TextBox.rows = this.Maxrows, TextBox.style.overflow = OverflowOn;
-            else TextBox.rows = Rows;
+            if (rows > this.maxRows) textBox.rows = this.maxRows, textBox.style.overflow = overflowOn;
+            else textBox.rows = rows;
         });
     }
 }
 
 let ExpandTextarea = new TextArea(5, 2);
-TextBox.addEventListener('input', ExpandTextarea.resizeTextarea());
+textBox.addEventListener('input', ExpandTextarea.resizeTextarea());
 
