@@ -1,5 +1,4 @@
-const path = require('path');
-
+var path = require('path');
 module.exports = {
     entry: './main.ts',
     module: {
@@ -19,3 +18,4 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     }
 };
+//# sourceMappingURL=webpack.config.js.map
