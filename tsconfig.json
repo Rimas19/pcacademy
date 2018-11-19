@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+       "outDir": "./calculate/dist",
+        "sourceMap": true,
+        "noImplicitAny": true,
+   //     "module": "es6",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true,
+    //    "module": "commonjs",
+        "watch": true
+    }
+    // "exclude": [
+    //     "node_modules"
+    // ]
+}

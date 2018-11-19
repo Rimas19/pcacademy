@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TypeScript Greeter</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Fast credit</h2>
+            <br/>
+            <div class="form-group col-md-6 mb-3">
+                <label id="labelc" for="credit">Credit</label>
+                <input type="number" class="form-control is-valid" id="credit" placeholder="credit in euros must be less 5001"
+                    value="" required>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label id="labelp" for="period">Period</label>
+                <input type="number" class="form-control is-valid" id="period" placeholder="period in month must be less 25"
+                    max=24 required>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label id="labelper" for="percent">Percentages</label>
+                <input type="number" class="form-control is-valid" id="percent" value=20 placeholder="percentage"
+                     required>
+            </div>
+            <div  class="form-group col-md-6 mb-3">
+                <div id="calc" >
+                    <button id="fast_btn" class="btn btn-primary button">Calculate</button>
+                    <a href="../../index.html"><button id="xx" class="btn btn-warning button">Cancel</button></a>
+                </div>
+            </div>
+            <div id="res">
+                <div class="form-group col-md-6 mb-3">
+                    <h4> Percentages </h4>
+                    <p id="percentag">  </p>
+                    <h4> Monthly installment </h4>
+                    <p id="monthly"> </p>
+                    <h4> Numbers of month </h4>
+                    <p id="resperiod">  </p>
+                </div>
+                <div id="back">
+                        <a href="fastCredit.html"><button id="xx" class="btn btn-warning button">Back</button></a>
+               </div>
+            </div>
+        </div>    
+    </div>
+</body>
+<script> var exports = {}; </script>
+<script src="../../dist/bundle.js"></script>
+
+</html>
