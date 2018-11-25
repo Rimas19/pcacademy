@@ -1,0 +1,26 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "monitor.js",
+  "dependencies": {
+    "git": "^0.1.5",
+    "os-monitor": "^1.0.6",
+    "os-usage": "^0.0.3",
+    "os-utils": "^0.0.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rimas19/pcacademy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rimas19/pcacademy/issues"
+  },
+  "homepage": "https://github.com/Rimas19/pcacademy#readme"
+}
