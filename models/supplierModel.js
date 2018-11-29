@@ -1,3 +1,6 @@
+module.exports = {
+
+}
 const mongoose = require('mongoose');
 const address = require('../entities/address')
 const Schema = mongoose.Schema;
@@ -10,5 +13,6 @@ let SupplierSchema = new Schema({
     supplierVATCode: { type: String },
     supplierIsActive: { type: Boolean, required: true }
 });
+
 
 module.exports = mongoose.model('Supplier', SupplierSchema);

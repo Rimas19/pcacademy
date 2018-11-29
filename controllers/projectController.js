@@ -9,6 +9,7 @@ exports.create = (request, response) => {
             City: request.body.projectAddress.City,
             Code: request.body.projectAddress.Code
         },
+        projectPrice: request.body.projectPrice,
         projectIsActive: request.body.projectIsActive
     });
     console.log(project)

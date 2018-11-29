@@ -7,6 +7,7 @@ let ProjectSchema = new Schema({
     projectName: { type: String, required: true, max: 50, unique: true },
     projectDescription: { type: String, max: 250 },
     projectAddress: address,
+    projectPrice: { type: Number, require: true },
     projectIsActive: { type: Boolean, required: true }
 });
 
