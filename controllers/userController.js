@@ -22,7 +22,7 @@ exports.get = (request, response) => {
 exports.read = (request, response) => {
     User.findById(request.query.id, (error, resp) => {
         if (error) {
-            return response.send(resp + 'Record nor found.');
+            return response.send(resp + ' : ' + ' Record nor found.');
         }
         response.send(resp);
     })
@@ -33,7 +33,7 @@ exports.delete = (request, response) => {
         if (error) {
             return response.send(error);
         }
-        response.send(resp + 'Record successfully deleted.');
+        response.send(resp + ' : ' + ' Record successfully deleted.');
     })
 }
 
@@ -42,6 +42,6 @@ exports.update = (request, response) => {
         if (error) {
             return response.send(error);
         }
-        response.send(resp + 'Record successfully updated.');
+        response.send(resp + ' : ' + ' Record successfully updated.');
     })
 }
