@@ -7,7 +7,8 @@ let SupplierSchema = new Schema({
     supplierName: { type: String, required: true, max: 50, unique: true },
     supplierAddress: address,
     supplierCode: { type: Number },
-    supplierVATCode: { type: String }
+    supplierVATCode: { type: String },
+    supplierIsActive: { type: Boolean, required: true }
 });
 
 module.exports = mongoose.model('Supplier', SupplierSchema);

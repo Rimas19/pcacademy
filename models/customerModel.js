@@ -7,7 +7,8 @@ let CustomerSchema = new Schema({
     customerName: { type: String, required: true, max: 50, unique: true },
     customerAddress: address,
     customerCode: { type: Number },
-    customerVATCode: { type: String }
+    customerVATCode: { type: String },
+    customerIsActive: { type: Boolean, required: true }
 });
 
 module.exports = mongoose.model('Customer', CustomerSchema);

@@ -9,7 +9,8 @@ exports.create = (request, response) => {
             Code: request.body.customerAddress.Code
         },
         customerCode: request.body.customerCode,
-        customerVATCode: request.body.customerVATCode
+        customerVATCode: request.body.customerVATCode,
+        customerIsActive: request.body.customerIsActive
     });
     console.log(customer)
     customer.save(() => {

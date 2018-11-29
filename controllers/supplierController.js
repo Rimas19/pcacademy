@@ -9,7 +9,8 @@ exports.create = (request, response) => {
             Code: request.body.supplierAddress.Code
         },
         supplierCode: request.body.supplierCode,
-        supplierVATCode: request.body.supplierVATCode
+        supplierVATCode: request.body.supplierVATCode,
+        supplierIsActive: request.body.supplierIsActive
     });
     console.log(supplier)
     supplier.save(() => {

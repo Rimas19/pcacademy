@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const user = require('./routes/userRoutes');
 const customers = require('./routes/customerRoutes');
 const suppliers = require('./routes/supplierRoutes');
+const projects = require('./routes/projectRoutes');
 
 mongoose.connect(CONFIG.CONNECTION_STRING)
 mongoose.Promise = global.Promise;
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/users', user);
 app.use('/customers', customers);
 app.use('/suppliers', suppliers);
+app.use('/projects', projects);
 
 app.listen(CONFIG.PORT, () => {
     console.log('Server started!');
