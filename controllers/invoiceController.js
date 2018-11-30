@@ -2,78 +2,73 @@ const Invoice = require('../models/invoiceModel');
 const Supplier = require('../models/supplierModel');
 const Customer = require('../models/customerModel');
 const Project = require('../models/projectModel');
-const mongoose = require('mongoose');
 const INVOICE_VAT = 21;
-const Schema = mongoose.Schema;
-exports.create = (request, response) => {
+const Sup = require('../controllers/supplierController')
+
+exports.create = async (request, response) => {
+    // Project.findById('5bffce348e223a4eacc1d166', (err, project) => {
+    //     Supplier.findById('5bffa0092b6cf93abcee1698', (err, supplier) => {
+    //         Customer.findById('5bff94f334c7e54ae054544c', (err, customer) => {
+    //             console.log('PROJECT', project)
+    //             console.log('supplier', supplier)
+    //             console.log('customer', customer)
+    //             response.send(customer);
+    //         })
+    //     })
+    // });
+
+    let supplier = await Supplier.findById('5bffa0092b6cf93abcee1698');
+    let customer = await Customer.findById('5bff94f334c7e54ae054544c');
+    let poject = await Project.findById('5bffce348e223a4eacc1d166');
+
+
+    console.log('poject', poject);
+    response.send(poject);
+    //let Project = yield Project.findById('5bffce348e223a4eacc1d166');
+
+
+
     let invoice = new Invoice({
         invoiceSer: request.body.invoiceSer,
         invoiceNumber: request.body.invoiceNumber,
         invoiceDate: request.body.invoiceDate,
-        // invoiceSupplier: {
-        //     supplierName: request.body.invoiceSupplier.supplierName,
-        //     supplierAddress: {
-        //         Street: request.body.Street,
-        //         City: request.body.City,
-        //         Code: request.body.Code
-        //     },
-        //     supplierCode: request.body.invoiceSupplier.supplierCode,
-        //     supplierVATCode: request.body.invoiceSupplier.supplierVATCode,
-        //     supplierIsActive: request.body.invoiceSupplier.supplierIsActive
-        // },
-        // invoiceCustomer: {
-        //     customerName: request.body.invoiceCustomer.customerName,
-        //     customerAddress: {
-        //         Street: request.body.Street,
-        //         City: request.body.City,
-        //         Code: request.body.Code
-        //     },
-        //     customerCode: request.body.invoiceCustomer.customerCode,
-        //     customerVATCode: request.body.invoiceCustomer.customerVATCode,
-        //     customerIsActive: request.body.invoiceCustomer.customerIsActive
-        // },
-        // invoiceProject: {
-        //     projectName: request.body.projectName,
-        //     projectPrice: request.body.projectPrice,
-        //     projectIsActive: request.body.projectIsActive
-        // },
         invoiceProjectQuant: request.body.invoiceProjectQuant,
-        invoicePrice: request.body.invoicePrice,
-        invoiceVAT: request.body.invoiceVAT,
-        invoiceRate: request.body.invoiceRate,
+        invoiceSupplier: supplier,
+        invoiceCustomer: customer,
+        invoiceProject: project,
+        invoicePrice: project.projectPrice,
+        invoiceVAT: (invoicePrice / 100 * INVOICE_VAT),
+        invoiceRate: invoicePrice + (invoicePrice / 100 * INVOICE_VAT),
         invoiceIsActive: request.body.invoiceIsActive
     });
-    invoice.invoiceSupplier = new Supplier({
-        //   _id: mongoose.Types.ObjectId(),
-        supplierName: request.body.invoiceSupplier.supplierName,
-        supplierAddress: {
-            Street: request.body.invoiceSupplier.supplierAddress.Street,
-            City: request.body.invoiceSupplier.supplierAddress.City,
-            Code: request.body.invoiceSupplier.supplierAddress.Code
-        },
-        supplierCode: request.body.invoiceSupplier.supplierCode,
-        supplierVATCode: request.body.invoiceSupplier.supplierVATCode,
-        supplierIsActive: request.body.invoiceSupplier.supplierIsActive
-    });
-    invoice.invoiceCustomer = new Customer({
-        //  _id: mongoose.Types.ObjectId(),
-        customerName: request.body.invoiceCustomer.customerName,
-        customerAddress: {
-            Street: request.body.invoiceCustomer.customerAddress.Street,
-            City: request.body.invoiceCustomer.customerAddress.City,
-            Code: request.body.invoiceCustomer.customerAddress.Code
-        },
-        customerCode: request.body.invoiceCustomer.customerCode,
-        customerVATCode: request.body.invoiceCustomer.customerVATCode,
-        customerIsActive: request.body.invoiceCustomer.customerIsActive
+    // invoice.invoiceSupplier = new Supplier({
+    //     supplierName: request.body.invoiceSupplier.supplierName,
+    //     supplierAddress: {
+    //         Street: request.body.invoiceSupplier.supplierAddress.Street,
+    //         City: request.body.invoiceSupplier.supplierAddress.City,
+    //         Code: request.body.invoiceSupplier.supplierAddress.Code
+    //     },
+    //     supplierCode: request.body.invoiceSupplier.supplierCode,
+    //     supplierVATCode: request.body.invoiceSupplier.supplierVATCode,
+    //     supplierIsActive: request.body.invoiceSupplier.supplierIsActive
+    // });
+    // invoice.invoiceCustomer = new Customer({
+    //     customerName: request.body.invoiceCustomer.customerName,
+    //     customerAddress: {
+    //         Street: request.body.invoiceCustomer.customerAddress.Street,
+    //         City: request.body.invoiceCustomer.customerAddress.City,
+    //         Code: request.body.invoiceCustomer.customerAddress.Code
+    //     },
+    //     customerCode: request.body.invoiceCustomer.customerCode,
+    //     customerVATCode: request.body.invoiceCustomer.customerVATCode,
+    //     customerIsActive: request.body.invoiceCustomer.customerIsActive
 
-    });
-    invoice.invoiceProject = new Project({
-        //   _id: mongoose.Types.ObjectId(),
-        projectName: request.body.invoiceProject.projectName,
-        projectPrice: request.body.invoiceProject.projectPrice,
-        projectIsActive: request.body.invoiceProject.projectIsActive
-    });
+    // });
+    // invoice.invoiceProject = new Project({
+    //     projectName: request.body.invoiceProject.projectName,
+    //     projectPrice: request.body.invoiceProject.projectPrice,
+    //     projectIsActive: request.body.invoiceProject.projectIsActive
+    // });
 
     console.log('Return : ' + JSON.stringify(invoice))
     invoice.save((err) => {
