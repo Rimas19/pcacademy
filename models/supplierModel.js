@@ -1,6 +1,3 @@
-module.exports = {
-
-}
 const mongoose = require('mongoose');
 const address = require('../entities/address')
 const Schema = mongoose.Schema;
