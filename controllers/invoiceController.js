@@ -24,35 +24,6 @@ exports.create = async (request, response) => {
         invoiceRate: (project.projectPrice * request.body.invoiceProjectQuant) + ((project.projectPrice * request.body.invoiceProjectQuant) / 100 * INVOICE_VAT),
         invoiceIsActive: request.body.invoiceIsActive
     });
-    // invoice.invoiceSupplier = new Supplier({
-    //     supplierName: request.body.invoiceSupplier.supplierName,
-    //     supplierAddress: {
-    //         Street: request.body.invoiceSupplier.supplierAddress.Street,
-    //         City: request.body.invoiceSupplier.supplierAddress.City,
-    //         Code: request.body.invoiceSupplier.supplierAddress.Code
-    //     },
-    //     supplierCode: request.body.invoiceSupplier.supplierCode,
-    //     supplierVATCode: request.body.invoiceSupplier.supplierVATCode,
-    //     supplierIsActive: request.body.invoiceSupplier.supplierIsActive
-    // });
-    // invoice.invoiceCustomer = new Customer({
-    //     customerName: request.body.invoiceCustomer.customerName,
-    //     customerAddress: {
-    //         Street: request.body.invoiceCustomer.customerAddress.Street,
-    //         City: request.body.invoiceCustomer.customerAddress.City,
-    //         Code: request.body.invoiceCustomer.customerAddress.Code
-    //     },
-    //     customerCode: request.body.invoiceCustomer.customerCode,
-    //     customerVATCode: request.body.invoiceCustomer.customerVATCode,
-    //     customerIsActive: request.body.invoiceCustomer.customerIsActive
-
-    // });
-    // invoice.invoiceProject = new Project({
-    //     projectName: request.body.invoiceProject.projectName,
-    //     projectPrice: request.body.invoiceProject.projectPrice,
-    //     projectIsActive: request.body.invoiceProject.projectIsActive
-    // });
-
 
     console.log('Return : ' + JSON.stringify(invoice))
     console.log('Date : ' + JSON.stringify(DATE))
