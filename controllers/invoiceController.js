@@ -2,43 +2,26 @@ const Invoice = require('../models/invoiceModel');
 const Supplier = require('../models/supplierModel');
 const Customer = require('../models/customerModel');
 const Project = require('../models/projectModel');
+const dateFormat = require('dateformat');
 const INVOICE_VAT = 21;
+const DATE =dateFormat(new Date(), "yyyy-mm-dd");
 const Sup = require('../controllers/supplierController')
 
 exports.create = async (request, response) => {
-    // Project.findById('5bffce348e223a4eacc1d166', (err, project) => {
-    //     Supplier.findById('5bffa0092b6cf93abcee1698', (err, supplier) => {
-    //         Customer.findById('5bff94f334c7e54ae054544c', (err, customer) => {
-    //             console.log('PROJECT', project)
-    //             console.log('supplier', supplier)
-    //             console.log('customer', customer)
-    //             response.send(customer);
-    //         })
-    //     })
-    // });
-
-    let supplier = await Supplier.findById('5bffa0092b6cf93abcee1698');
-    let customer = await Customer.findById('5bff94f334c7e54ae054544c');
-    let poject = await Project.findById('5bffce348e223a4eacc1d166');
-
-
-    console.log('poject', poject);
-    response.send(poject);
-    //let Project = yield Project.findById('5bffce348e223a4eacc1d166');
-
-
-
+    let supplier = await Supplier.findById('5c03ae30d0672e27604aae23');
+    let customer = await Customer.findById('5c03aed3d0672e27604aae26');
+    let project = await Project.findById('5c03ad90d0672e27604aae22');
     let invoice = new Invoice({
         invoiceSer: request.body.invoiceSer,
         invoiceNumber: request.body.invoiceNumber,
-        invoiceDate: request.body.invoiceDate,
+        invoiceDate:  DATE,
         invoiceProjectQuant: request.body.invoiceProjectQuant,
         invoiceSupplier: supplier,
         invoiceCustomer: customer,
         invoiceProject: project,
-        invoicePrice: project.projectPrice,
-        invoiceVAT: (invoicePrice / 100 * INVOICE_VAT),
-        invoiceRate: invoicePrice + (invoicePrice / 100 * INVOICE_VAT),
+        invoicePrice: project.projectPrice * request.body.invoiceProjectQuant,
+        invoiceVAT: ((project.projectPrice * request.body.invoiceProjectQuant) / 100 * INVOICE_VAT),
+        invoiceRate: (project.projectPrice * request.body.invoiceProjectQuant) + ((project.projectPrice * request.body.invoiceProjectQuant) / 100 * INVOICE_VAT),
         invoiceIsActive: request.body.invoiceIsActive
     });
     // invoice.invoiceSupplier = new Supplier({
@@ -70,9 +53,14 @@ exports.create = async (request, response) => {
     //     projectIsActive: request.body.invoiceProject.projectIsActive
     // });
 
+
     console.log('Return : ' + JSON.stringify(invoice))
-    invoice.save((err) => {
-        if (err) throw err;
+    console.log('Date : ' + JSON.stringify(DATE))
+    invoice.save((err ) => {
+        if (err) {
+            return response.send();
+        }
+      
         response.send('Record successfully created.');
     });
 }

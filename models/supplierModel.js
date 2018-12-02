@@ -12,4 +12,4 @@ let SupplierSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('Supplier', SupplierSchema);
+module.exports = mongoose.model('Supplier', SupplierSchema, 'suppliers');
