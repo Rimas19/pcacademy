@@ -8,9 +8,9 @@ const dateFormat = require('dateformat');
 const DATE = dateFormat(new Date(), "yyyy-mm-dd");
 
 exports.create = async (request, response) => {
-    let supplier = await Supplier.findById('5bffa0092b6cf93abcee1698');
-    let customer = await Customer.findById('5bff94f334c7e54ae054544c');
-    let project = await Project.findById('5bffce348e223a4eacc1d166');
+    let supplier = await Supplier.findById('5c0520380973c5244c7e4254')
+    let customer = await Customer.findById('5c051fe20973c5244c7e4252');
+    let project = await Project.findById('5c0520f60973c5244c7e4256');
     let invoice = new Invoice({
         invoiceSer: request.body.invoiceSer,
         invoiceNumber: request.body.invoiceNumber,
@@ -24,7 +24,6 @@ exports.create = async (request, response) => {
         invoiceRate: (project.projectPrice * request.body.invoiceProjectQuant) + ((project.projectPrice * request.body.invoiceProjectQuant) / PERCENT * INVOICE_VAT),
         invoiceIsActive: request.body.invoiceIsActive
     });
-    //    console.log('Return : ' + JSON.stringify(invoice))
     invoice.save((err) => {
         if (err) {
             return response.send();
@@ -33,10 +32,9 @@ exports.create = async (request, response) => {
     });
 }
 
-exports.get = (request, response) => {
-    Invoice.find((error, invoices) => {
-        response.send(invoices);
-    })
+exports.get = async function (request, response) {
+    let invoice = await Invoice.find().populate('invoiceSupplier').populate('invoiceCustomer').populate('invoiceProject');
+    response.send(invoice);
 }
 
 exports.read = (request, response) => {

@@ -7,9 +7,18 @@ const customers = require('./routes/customerRoutes');
 const suppliers = require('./routes/supplierRoutes');
 const projects = require('./routes/projectRoutes');
 const invoices = require('./routes/invoiceRoutes');
+const handleError = require('./errorHandler');
 
-mongoose.connect(CONFIG.CONNECTION_STRING)
-mongoose.Promise = global.Promise;
+// mongoose.connect(CONFIG.CONNECTION_STRING)
+// mongoose.Promise = global.Promise;
+
+if (process.env.NODE_ENV && process.env.NODE_ENV === 'test') {
+    mongoose.connect(CONFIG.CONNECTION_STRING_TEST)
+}
+else {
+    mongoose.connect(CONFIG.CONNECTION_STRING)
+}
+
 
 const app = express();
 
@@ -25,3 +34,4 @@ app.listen(CONFIG.PORT, () => {
     console.log('Server started!');
 })
 
+module.exports = app;
