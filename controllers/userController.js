@@ -1,14 +1,53 @@
 const User = require('../models/userModel');
+const okta = require('@okta/okta-sdk-nodejs');
+
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
+const CONFIG = require('../config');
+
+exports.signUp = async function (request, response) {
+    response.json({
+        message: 'Sign up sucessful',
+        user: request.user
+    });
+}
+
+exports.login = async function (request, response) {
+    passport.authenticate('login', async (error, user, info) => {
+        try {
+            if (error || !user) {
+                response.send(info);
+            }
+
+            request.login(user, { session: false }, async (error) => {
+                if (error) {
+                    response.send(error);
+                }
+                const body = { _id: user._id, email: user.email };
+                const token = jwt.sign({ user: body }, CONFIG.JWT_SECRET);
+                response.json({ token });
+            });
+
+        } catch (err) {
+            response.send(err.message);
+        }
+
+    })(request, response);
+}
+
 
 exports.create = (request, response) => {
     let user = new User({
-        userName: request.body.userName,
-        userPassword: request.body.userPassword,
-        userRole: request.body.userRole,
-        userIsActive: request.body.userIsActive
+        email: request.body.userEmail,
+        password: request.body.userPassword,
+        role: request.body.userRole,
+        isActive: request.body.userIsActive
     });
 
-    user.save(() => {
+    user.save((error, resp) => {
+        if (error) {
+            console.log(error);
+        }
         response.send('Record successfully created.');
     });
 }

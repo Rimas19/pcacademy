@@ -4,16 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 10000",
+    "start": "nodemon app.js",
+    "debug": "nodemon --inspect app.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "body-parser": "^1.18.3",
     "dateformat": "^3.0.3",
     "express": "^4.16.4",
     "git": "^0.1.5",
     "mongoose": "^5.3.14",
     "npm": "^6.4.1"
+  },
+  "dependencies": {
+    "@okta/okta-sdk-nodejs": "^1.2.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "ejs": "^2.6.1",
+    "jade": "^1.11.0",
+    "jsdom": "^13.0.0",
+    "mocha": "^5.2.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.7",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "should": "^13.2.3"
   }
 }
