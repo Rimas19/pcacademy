@@ -10,14 +10,6 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "body-parser": "^1.18.3",
-    "dateformat": "^3.0.3",
-    "express": "^4.16.4",
-    "git": "^0.1.5",
-    "mongoose": "^5.3.14",
-    "npm": "^6.4.1"
-  },
   "dependencies": {
     "@okta/okta-sdk-nodejs": "^1.2.0",
     "chai": "^4.2.0",
