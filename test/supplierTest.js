@@ -2,7 +2,7 @@
 // const chai = require('chai');
 // const chaiHtpp = require('chai-http');
 // const app = require('../app');
-// const CustomerModel = require('../models/customerModel');
+// const SupplierModel = require('../models/supplierModel');
 // const should = require('chai').should();
 // chai.should();
 // chai.use(chaiHtpp);
@@ -10,35 +10,35 @@
 // mongoose = require('mongoose');
 // mongoose.set('useCreateIndex', true);
 
-// describe('Customer', () => {
+// describe('Supplier', () => {
 //     beforeEach((done) => {
-//         console.log('CALL CUSTOMER');
-//         let newCustomer = new CustomerModel({
-//             customerName: "Customer-1",
-//             customerAddress: {
+//         console.log('CALL supplier');
+//         let newSupplier = new SupplierModel({
+//             supplierName: "Supplier-1",
+//             supplierAddress: {
 //                 Street: "Kauno g.5",
 //                 City: "Kaunas",
 //                 Code: "12365"
 //             },
-//             customerCode: 123466,
-//             customerVATCode: "LT123456",
-//             customerIsActive: true
+//             supplierCode: 123466,
+//             supplierVATCode: "LT123456",
+//             supplierIsActive: true
 //         });
 
-//         let newCustomer1 = new CustomerModel({
-//             customerName: "Customer-2",
-//             customerAddress: {
+//         let newSupplier1 = new SupplierModel({
+//             supplierName: "Supplier-2",
+//             supplierAddress: {
 //                 Street: "Kauno g.5",
 //                 City: "Kaunas",
 //                 Code: "12365"
 //             },
-//             customerCode: 123466,
-//             customerVATCode: "LT123456",
-//             customerIsActive: true
+//             supplierCode: 123466,
+//             supplierVATCode: "LT123456",
+//             supplierIsActive: true
 //         });
 
-//         newCustomer1.save((err) => {
-//             newCustomer.save((err) => {
+//         newSupplier1.save((err) => {
+//             newSupplier.save((err) => {
 //                 if (err) {
 //                     console.log('Error on save new object :', err);
 //                 }
@@ -51,14 +51,14 @@
 //     });
 
 //     afterEach((done) => {
-//         CustomerModel.collection.drop().then(function () {
+//         SupplierModel.collection.drop().then(function () {
 //             done();
 //         }).catch(function () {
 //             // error handling
 //         })
 //     });
 
-//     //--- Test - 1 OK
+//     // //--- Test - 1 OK
 //     it(' Customer Test-1  should return status 200  ', (done) => {
 //         chai.request(app)
 //             .get('/customers/getAll')
@@ -68,32 +68,32 @@
 //             })
 //     });
 
-//     //--- Test-2  OK
-//     it(' Customer Test-2 should Customer to have requared data (_id, customerName, customerCode  and etc.)', (done) => {
+//     //     //--- Test-2  OK
+//     it(' Supplier Test-2 should Supplier to have requared data (_id, supplierName, supplierCode  and etc.)', (done) => {
 //         chai.request(app)
-//             .get('/customers/getAll')
+//             .get('/suppliers/getAll')
 //             .end((err, response) => {
 //                 chai.request(app)
-//                     .get('/customers/' + response.body[0]._id)
+//                     .get('/suppliers/' + response.body[0]._id)
 //                     .end((err, res) => {
 //                         res.should.have.status(200);
 //                         const obj = response.body[0];
 //                         obj._id.should.eql(response.body[0]._id);
 //                         obj.should.have.property('_id');
-//                         obj.should.have.property('customerName');
-//                         obj.customerName.should.eql(response.body[0].customerName);
-//                         obj.customerCode.should.eql(123466);
-//                         obj.customerAddress.Street.should.not.eql(null);
-//                         obj.customerAddress.City.should.not.eql(null);
+//                         obj.should.have.property('supplierName');
+//                         obj.supplierName.should.eql(response.body[0].supplierName);
+//                         obj.supplierCode.should.eql(123466);
+//                         obj.supplierAddress.Street.should.not.eql(null);
+//                         obj.supplierAddress.City.should.not.eql(null);
 //                         done();
 //                     });
 //             });
 //     });
 
-//     //--- Test-3 
-//     it(' Customer Test-3 should return list of customers', (done) => {
+//     //     //--- Test-3 
+//     it(' Supplier Test-3 should return list of suppliers', (done) => {
 //         chai.request(app)
-//             .get('/customers/getAll')
+//             .get('/suppliers/getAll')
 //             .end((err, res) => {
 //                 const obj = res.body;
 //                 res.should.have.status(200);
@@ -103,71 +103,71 @@
 //             });
 //     });
 
-//     //-- Test-4
-//     it(' Customer Test-4 should add a new customer ', (done) => {
+//     //     //-- Test-4
+//     it(' Supplier Test-4 should add a new supplier ', (done) => {
 //         chai.request(app)
-//             .post('/customers/new')
+//             .post('/suppliers/new')
 //             .send({
-//                 customerName: "Customer-3",
-//                 customerAddress: {
+//                 supplierName: "Supplier-3",
+//                 supplierAddress: {
 //                     Street: "Kauno g.5",
 //                     City: "Kaunas",
 //                     Code: "12365"
 //                 },
-//                 customerCode: 11111,
-//                 customerVATCode: "LT123456",
-//                 customerIsActive: true
+//                 supplierCode: 123466,
+//                 supplierVATCode: "LT123456",
+//                 supplierIsActive: true
 //             })
 //             .end((err, res) => {
 //                 chai.request(app)
-//                     .get('/customers/getAll')
+//                     .get('/suppliers/getAll')
 //                     .end((err, response) => {
 //                         res.should.have.status(200);
 //                         const obj = response.body[((response.body.length) - 1)];
 //                         obj._id.should.eql(response.body[((response.body.length) - 1)]._id);
 //                         obj.should.have.property('_id');
-//                         obj.should.have.property('customerName');
-//                         obj.customerName.should.eql('Customer-3');
+//                         obj.should.have.property('supplierName');
+//                         obj.supplierName.should.eql('Supplier-3');
 //                         done();
 //                     });
 //             });
 //     });
 
-//     // //--- Test-5
-//     it(' Customer Test-5 should update a customerNamme', (done) => {
+//     //     // //--- Test-5
+//     it(' Supplier Test-5 should update a supplierNamme', (done) => {
 //         chai.request(app)
-//             .get('/customers/getAll')
+//             .get('/suppliers/getAll')
 //             .end((err, response) => {
 //                 chai.request(app)
-//                     .put('/customers/update/?id=' + response.body[1]._id)
-//                     .send({ customerName: "Customer updated" })
+//                     .put('/suppliers/update/?id=' + response.body[1]._id)
+//                     .send({ supplierName: "Supplier updated" })
 //                     .end((err, res) => {
 //                         chai.request(app)
-//                             .get('/customers/getAll')
+//                             .get('/suppliers/getAll')
 //                             .end((err, response) => {
 //                                 should.not.exist(err);
 //                                 response.should.have.status(200);
 //                                 const obj = response.body[1]
-//                                 obj.customerName.should.be.eql("Customer updated")
+//                                 obj.supplierName.should.be.eql("Supplier updated")
 //                                 done();
 //                             });
 //                     });
 //             });
 //     });
 
-//     // --- Teast-6
-//     it(' Customer Test-6 should delete a customer', (done) => {
+//     //     // --- Teast-6
+//     it(' Supploier Test-6 should delete a supplier', (done) => {
 //         chai.request(app)
-//             .get('/customers/getAll')
+//             .get('/suppliers/getAll')
 //             .end((err, response) => {
 //                 chai.request(app)
-//                     .get('/customers/' + response.body[((response.body.length) - 1)]._id)
+//                     .get('/suppliers/' + response.body[((response.body.length) - 1)]._id)
 //                     .end((err, res) => {
 //                         chai.request(app)
-//                             .delete('/customers/delete/?id=' + response.body[((response.body.length) - 1)]._id)
+//                             .delete('/suppliers/delete/?id=' + response.body[((response.body.length) - 1)]._id)
 //                             .end((error, res) => {
 //                                 chai.request(app)
-//                                     .get('/customers/' + response.body[((response.body.length) - 1)]._id)
+//                                     .get('/suppliers/' + response.body[((response.body.length) - 1)]._id)
 //                                     .end((err, respo) => {
 //                                         respo.should.have.status(200);
 //                                         const obj = respo.body;
@@ -178,5 +178,6 @@
 //                     });
 //             });
 //     });
+
 
 // })

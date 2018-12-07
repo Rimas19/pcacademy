@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 
 let InvoiceSchema = new Schema({
-   invoiceSer: { type: String, required: true },
-    invoiceNumber: { type: Number, required: true, unique: true },
+    invoiceSer: { type: String, required: true },
+    invoiceNumber: { type: Number, required: true },
     invoiceDate: { type: Date, default: Date.now },
     invoiceSupplier: { type: Schema.Types.ObjectId, ref: 'Supplier' },
     invoiceCustomer: { type: Schema.Types.ObjectId, ref: 'Customer' },
