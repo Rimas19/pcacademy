@@ -17,7 +17,10 @@ class TextArea {
             textBox.style.overflow = overflowOff;
             for (let i = 0; i < arrayText.length; i++) {
                 rows += parseInt(arrayText[i].length / cols);
+                console.log(arrayText[i].length / cols);
             }
+            let x = arrayText.length / rows;
+
             if (rows < this.minRows || enteredText === '') {
                 rows = this.minRows
             }
