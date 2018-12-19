@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Style from './styles.css';
-
 export default function InputText(props) {
-
 
   return (
     <div className={Style.input}>
