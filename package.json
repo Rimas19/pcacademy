@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 10000",
-    "start": "nodemon app.js",
-    "debug": "nodemon --inspect app.js"
+    "test": "nodemon --exec \"mocha -R min\"",
   },
   "author": "",
   "license": "ISC",
