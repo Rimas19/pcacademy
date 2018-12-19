@@ -6,7 +6,7 @@ export default class TestPage extends Component {
 
     return (
       <div>
-        <TestHeader />
+        <TestHeader {...this.props} />
       </div>
 
     )
