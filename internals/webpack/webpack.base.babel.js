@@ -34,23 +34,20 @@ module.exports = options => ({
         },
       },
       {
-        //   // Preprocess our own .css files
-        //   // This is the place to add your own loaders (e.g. sass/less etc.)
-        //   // for a list of loaders, see https://webpack.js.org/loaders/#styling
-        test: /\.css$/,
+        // Preprocess our own .css files
+        // This is the place to add your own loaders (e.g. sass/less etc.)
+        // for a list of loaders, see https://webpack.js.org/loaders/#styling
+        test: /\.less$/,
         exclude: /node_modules/,
         use: [
-
           'style-loader',
-
-          // {
-          //   loader: 'css-loader',
-          //   options: {
-          //     modules: true,
-          //   },
-          // },
-          'css-loader',
-
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          'less-loader',
         ],
       },
       {

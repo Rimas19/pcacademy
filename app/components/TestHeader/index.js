@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Style from './styles.css';
+import Style from './styles.less';
+import './styles.less'
 
 export default function TestHeader(props) {
   console.log(props.match.params.name)
 
-  return <div className={Style.header}>
-    <div className={Style.text}> Test page</div>
-    <div className={Style.name}> {props.match.params.name} </div>
+  return <div className="header">
+    <div className="text"> Test page</div>
+    <div className="name"> {props.match.params.name} </div>
   </div>;
 
 

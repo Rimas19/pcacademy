@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import SubmitButton from '../../components/SubmitButton';
 import InputText from '../../components/InputText';
-import Style from './styles.css';
+import Style from './styles.less';
+import './styles.less'
 export default class MainPage extends Component {
   state = {
     value: '',
@@ -14,8 +15,7 @@ export default class MainPage extends Component {
   };
   render() {
     return (
-      <div className={Style.main}>
-        <div className={Style.text}>Main page</div>
+      <div className="main">
         <InputText {...this.props} handleChange={this.inputChanged} />
         <SubmitButton {...this.props} test={this.state.value} />
       </div>

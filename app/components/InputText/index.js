@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Style from './styles.css';
+import Style from './styles.less';
+import './styles.less'
 export default function InputText(props) {
 
   return (
-    <div className={Style.input}>
+    <div >
       <input
-        className={Style.textBox}
+        className="input"
         type="text"
         onChange={props.handleChange}
       />

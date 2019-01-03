@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Style from './styles.css';
+import Style from './styles.less';
+import './styles.less'
 
 export default class SubmitButton extends Component {
 
@@ -12,7 +13,7 @@ export default class SubmitButton extends Component {
 
   render() {
     return (
-      <div className={Style.button}>
+      <div className="button">
         <button type="submit" onClick={this.gotoTestPage}>
           Submit
         </button>

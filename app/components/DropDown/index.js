@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Style from './styles.css';
+import Style from './styles.less';
+import './styles.less';
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles.css';
+
 
 const listClasses = [
     { label: "First", value: 1, className: 'first' },
@@ -11,10 +12,10 @@ const listClasses = [
 ];
 
 export default class DropDown extends Component {
-
     state = {
         selectedOption: null,
-        x: ""
+        x: "",
+
     }
 
     handleChange = (selectedOption) => {
@@ -26,25 +27,21 @@ export default class DropDown extends Component {
 
     render() {
         const { selectedOption } = this.state;
-        console.log("Selected  :" + this.x)
-        const xx = ('Style.' + this.x)
-        console.log("Selected  +  :" + xx)
+        const xx = this.x;
         return (
             <div>
-                <div className={Style.first} >Drop Down</div>
+                <div className="drop"></div>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 ">
-                            <div className={`${this.x}`}>
-
+                            <div className={xx}>
                                 <Select
                                     value={selectedOption}
                                     onChange={this.handleChange}
                                     options={listClasses}
                                 />
                             </div>
-                            <div className={`${this.x}`}>Test</div>
                         </div>
                         <div className="col-md-4"></div>
                     </div>
