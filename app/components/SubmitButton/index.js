@@ -8,7 +8,7 @@ export default class SubmitButton extends Component {
 
   gotoTestPage = () => {
     console.log('Response  :', this.props.test);
-    this.props.history.push(`/main/test/${this.props.test}`);
+    this.props.history.push(`/main/${this.props.test}`);
   };
 
   render() {
