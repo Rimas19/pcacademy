@@ -1,61 +1,77 @@
 .sidebar {
-  border: 1px solid rgb(130, 130, 131); 
-    width: 15%;
+  width: 200px;
   height:100%;
-
   background-color: rgb(130, 130, 131);
 }
 .sidenav{
-    color:rgb(145, 148, 153);
-
-    font-size: 20px;
-      //  font-family: Lato, sans-serif;
-      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      
-  }
-  .navh{
-    width: 250px;
-    height: 79px;
-  margin-top: -20px;
-    background:  rgb(26, 37, 53);
-   margin-left: -20px;
-  }
-  .navhead{
-      padding: 28px;
-    display:flex;
-color: rgb(179, 180, 182);
-  }
-  .btncross{
-    margin-left: 40px;
-    color: red;
-
-  }
-  .container {
-    margin-left: -20px;
-    width: 100%;
-    
-    display:flex;
- 
- 
-  }
-  .container:hover {
-  
-    width: 300px;
-    background:  rgb(18, 26, 37);
-    display:flex;
- margin-left: -20px;
-
- 
-  }
-  .nav{
-    padding: 20px;
-    margin-left: 20px;
-  }
-  .navtext{
-  
-     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- margin-top: 20px;
-    margin-left: 15px;
-    font-size: 15px;
+  color:rgb(55, 57, 59);
+  font-size: 20px;
+  font-family: Helvetica;
    
-  }
+}
+
+.navh{
+  width: 200px;
+  height: 80px;
+  background:  rgb(175, 175, 177);
+  margin-left: 15px;
+}
+.navh:focus{
+  outline:0;
+}
+
+.navhead{
+  padding: 20px;
+  color: rgb(13, 22, 19);
+  display:flex;
+}
+.btncross{
+  margin-left: 20px;
+  color: rgb(243, 16, 16);
+}
+.btncross:focus{
+  outline:0;
+}
+.container {
+  width: 100%;
+  display:flex;
+}
+.container:hover {
+  width: 160%;
+  background:  rgb(90, 95, 100);
+    // display:flex;
+   margin-left:0px;
+   color: darkgray;
+}
+.nav{
+  height: 60px;
+  padding: 0px;
+  padding-right: 10px;
+  margin-left: 20px;
+}
+.nav:focus{
+  outline:0;
+}
+.navtext{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color:rgb(13, 22, 19);
+  font-family:Helvetica;
+  font-size: 15px;
+  margin-left: 5px;
+//  margin-top: 25px;
+}
+.navtext:hover {
+  width: 160%;
+  background:  rgb(90, 95, 100);
+  // display:flex;
+   margin-left:5px;
+   color: darkgray;
+}
+.navtext:focus{
+  outline:0;
+}
+
+.root{
+  z-index: -1;
+}

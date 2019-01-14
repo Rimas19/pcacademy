@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import SubmitButton from '../../components/SubmitButton';
 import InputText from '../../components/InputText';
-import Style from './styles.less';
-import './styles.less'
+import './styles.less';
 export default class MainPage extends Component {
   state = {
     value: '',
@@ -11,8 +10,9 @@ export default class MainPage extends Component {
   inputChanged = event => {
     this.setState({ value: event.target.value });
     console.log(this.state.value);
-    console.log('Props :' + this.props);
+    console.log(`Props :${this.props}`);
   };
+
   render() {
     return (
       <div className="main">

@@ -1,41 +1,22 @@
 import React from 'react';
-import mainLogo from '../../images/gra.png';
-import './header.less'
-import './sidebar.less'
-export default class Header extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            time: this.setTime()
-        }
-    }
-    setTime() {
-        let tempTime = new Date();
-        return tempTime.toLocaleTimeString();
-    }
-    componentDidMount() {
-        setInterval(() => {
-            this.setState({ time: this.setTime() })
-        }, 1000)
-    }
-    render() {
-        return <header className="header wrapper">
+import PropTypes from 'prop-types';
+import './header.less';
 
-            <div className="headlogo">
-                <img src={mainLogo} alt="Logo" />
-            </div>
-            <div className="headtext">
-                <h3 >e-Invoice</h3>
-
-            </div>
-
-            <div className="headclock">
-                <h3>
-                    {this.state.time}
-                </h3>
-            </div>
-
-        </header>;
-    }
+export default function Header(props) {
+  return (
+    <div>
+      <header className="header wrapper">
+        <button
+          type="button"
+          onClick={props.open}
+          className="fa fa-bars fa-2x burg"
+        />
+        <div className="headtext">
+          <h3>Test-Layout</h3>
+        </div>
+      </header>
+    </div>
+  );
 }
 
+Header.propTypes = { open: PropTypes.func };

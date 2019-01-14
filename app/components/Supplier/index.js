@@ -1,22 +1,18 @@
 import React from 'react';
 import MaterialDatatable from 'material-datatable';
 import Data from './data.json';
-import './project.less';
+import './supplier.less';
 // eslint-disable-next-line react/prefer-stateless-function
-export default class Project extends React.Component {
+export default class Supplier extends React.Component {
   render() {
     const options = {
       filter: true,
-      search: true,
-      print: true,
-      download: false,
-      viewColumns: false,
       selectableRows: true,
       usePaperPlaceholder: true,
       filterType: 'multiselect',
       responsive: 'scroll',
-      rowsPerPage: 10,
-      rowsPerPageOptions: [5, 10, 5],
+      rowsPerPage: 5,
+      rowsPerPageOptions: [5, 10, 10],
       rowHover: true,
       //   searchText: '22',
       componentWillReceiveProps: true,
@@ -42,20 +38,16 @@ export default class Project extends React.Component {
         field: 'id',
       },
       {
-        name: 'Project name',
-        field: 'project_name',
+        name: 'First name',
+        field: 'first_name',
       },
       {
-        name: 'Latitude',
-        field: 'lat',
+        name: 'Last name',
+        field: 'last_name',
       },
       {
-        name: 'Longitude',
-        field: 'lng',
-      },
-      {
-        name: 'Status',
-        field: 'status',
+        name: 'Gender',
+        field: 'gender',
       },
     ];
     const tabledata = Data;
@@ -69,9 +61,9 @@ export default class Project extends React.Component {
 
     return (
       <div>
-        <div className="project">
+        <div className="supplier">
           <MaterialDatatable
-            title="Projects"
+            title="Supplier list"
             data={tabledata}
             columns={columns}
             options={options}

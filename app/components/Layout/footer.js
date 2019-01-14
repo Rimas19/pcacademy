@@ -1,14 +1,11 @@
 import React from 'react';
-import './footer.less'
+import './footer.less';
 function Footer() {
-    return (
-        <footer className="footer">
-            <div className="footertext">
-                Homework-5 REACT
-        </div>
-
-        </footer>
-    )
+  return (
+    <footer className="footer">
+      <div className="footertext">Layout</div>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;

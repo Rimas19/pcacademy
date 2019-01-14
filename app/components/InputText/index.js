@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
-import Style from './styles.less';
-import './styles.less'
-export default function InputText(props) {
-
+import React from 'react';
+import './styles.less';
+export default function InputText() {
   return (
-    <div >
-      <input
-        className="input"
-        type="text"
-        onChange={props.handleChange}
-      />
+    <div>
+      {/* <input className="input" type="text" onChange={props.handleChange} /> */}
     </div>
   );
-
 }

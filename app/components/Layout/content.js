@@ -1,36 +1,25 @@
-import React, { Component } from 'react';
-import Project from '../project';
-import Customer from '../Customer'
+import React from 'react';
+import Project from '../Project';
+//  import Customer from '../Customer';
 import './content.less';
-export default class Content extends Component {
+// import Invoice from '../Invoice';
+import Supplier from '../Supplier';
+export default function Content() {
+  return (
+    <div id="cont">
+      <div className="row">
 
-
-    render() {
-        return (
-            <div className="container">
-                {/* <div className="title">
-                    <h1 >APP TITLE</h1>
-                </div> */}
-
-
-                <div className="project">
-                    <div className="projText">
-                        <h4>Projects</h4>
-                    </div>
-
-                    <Project />
-                </div>
-
-
-                <div className="customer">
-                    <div className="custText">
-                        <h4>Customers</h4>
-                    </div>
-
-                    <Customer />
-                </div>
-            </div>
-        );
-    }
+        <div className="col-6">
+          <Supplier />
+        </div>
+        <div className="col-6">
+          <Project />
+        </div>
+        <div className="w-100" />
+        {/* <div className="col-5">
+          <Invoice />
+        </div> */}
+      </div>
+    </div>
+  );
 }
-

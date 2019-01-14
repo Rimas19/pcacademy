@@ -1,24 +1,75 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
-import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import MainPage from '../../containers/MainPage';
-import TestPage from '../../containers/TestPage';
+import MainPage from '../MainPage';
 import GlobalStyle from '../../global-styles';
-import Dashboard from '../../containers/Dashboard';
-import Customers from '../../containers/Customers';
-
+import Dashboard from '../Dashboard';
+import Customers from '../../components/Customer';
+import Layout from '../../components/Layout';
+import Projects from '../../components/Project';
+import Settings from '../../components/Setting';
+import Invoice from '../../components/Invoice';
+import Pagetest from '../../components/Pagetest';
 export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={HomePage} />
         <Route exact path="/main" component={MainPage} />
-        <Route exact path="/main/test/:name" component={TestPage} />
-        <Route exact path="/main/dashboard" component={Dashboard} />
-        <Route exact path="/main/dashboard/customers" component={Customers} />
-        <Route component={NotFoundPage} />
+        <Layout>
+          <Route
+            exact
+            path="/dashboard"
+            render={() => (
+              <div>
+                <Dashboard />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/customers"
+            render={() => (
+              <div>
+                <Customers />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/projects"
+            render={() => (
+              <div>
+                <Projects />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/invoices"
+            render={() => (
+              <div>
+                <Invoice />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/settings"
+            render={() => (
+              <div>
+                <Settings />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/testpage"
+            render={() => (
+              <div>
+                <Pagetest />
+              </div>
+            )}
+          />
+        </Layout>
       </Switch>
       <GlobalStyle />
     </div>

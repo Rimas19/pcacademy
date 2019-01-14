@@ -1,105 +1,94 @@
-import React, { Component } from 'react';
-import ReactTable from "react-table";
-import "react-table/react-table.css";
-import './styles.less'
-import Data from './data.json'
+import React from 'react';
+import MaterialDatatable from 'material-datatable';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Data from './data.json';
+import './customer.less';
 
-const rows = 10;
-export default class Customers extends Component {
-    constructor() {
-        super();
-        this.state = {
-            nextPage: rows,
-            data: [],
-        };
-    }
+// eslint-disable-next-line react/prefer-stateless-function
+export default class Customer extends React.Component {
+  render() {
+    const options = {
+      filter: true,
+      delete: true,
+      search: true,
+      print: true,
+      download: false,
+      viewColumns: false,
+      selectableRows: true,
+      usePaperPlaceholder: true,
+      filterType: 'multiselect',
+      responsive: 'scroll',
+      rowsPerPage: 10,
+      rowsPerPageOptions: [5, 10, 5],
+      rowHover: true,
+      //   searchText: '22',
+      componentWillReceiveProps: true,
+      page: 0,
+      sortColumnIndex: 2,
+      sortColumnDirection: 'desc',
+      //   filterList: [[], [], ['Location 2'], [], [], [], []],
 
+      //   onTableChange: (action, state) => this.onChange(state),
+    };
 
-    componentDidMount() {
-
-
-        this.setState({ data: Data })
-
-    }
-
-    // const columns = [{
-    //     Header: 'id',
-    //     accessor: 'id'
-    // },
-    // {
-    //     Header: 'first_name',
-    //     accessor: 'first_name'
-    // },
-    // {
-    //     Header: 'last_name',
-    //     accessor: 'last_name'
-    // },
-    // {
-    //     Header: 'gender',
-    //     accessor: 'gender',
+    // if (this.state.tableState !== undefined && this.state.tableState !== null) {
+    //   options.filterList = this.state.tableState.filterList;
+    //   options.searchText = this.state.tableState.searchText;
+    //   options.page = this.state.tableState.page;
+    //   options.rowsPerPage = this.state.tableState.rowsPerPage;
+    //   options.sortColumnDirection = this.state.tableState.sortColumnDirection;
+    //   options.sortColumnIndex = this.state.tableState.sortColumnIndex;
     // }
-    // ]
-    previousPage = () => {
-        if (this.state.nextPage > rows)
-            this.setState((prevState) => ({ nextPage: (prevState.nextPage - rows) }))
-    }
+    const columns = [
+      {
+        name: 'Id',
+        field: 'id',
+      },
+      {
+        name: 'Customer name',
+        field: 'customer_name',
+      },
+      {
+        name: 'Code',
+        field: 'cust_code',
+      },
+      {
+        name: 'VAT code',
+        field: 'vat_code',
+      },
+      {
+        name: 'Address',
+        field: 'street',
+      },
+    ];
+    const tabledata = Data;
+    // const options = {
+    //   filterType: 'checkbox',
+    //   responsive: 'scroll',
+    // rowsPerPage: 5,
+    // selectableRows: true,
+    // filterType: 'multiselect',
+    // };
 
-    nextPage = () => {
-        if (this.state.nextPage + 1 < this.state.data.length) {
-            this.setState((prevState) => ({ nextPage: (prevState.nextPage + rows) }))
-        }
-    }
+    const deleteIcon = (
+      <IconButton onClick={console.log('delete')}>
+        <DeleteIcon color="secondary" />
+      </IconButton>
+    );
 
-    render() {
-        //const data = Data;
-        const { data, currentPage, nextPage } = this.state
-
-        return (
-            <div className="prtable" >
-                {/* <ReactTable striped bordered condensed hover
-                    data={Data}
-                    columns={columns}
-                    showPaginationBottom={true}
-                    defaultPageSize={5}
-                    pageSizeOptions={[5, 5]}
-                    collapseOnSortingChange={true}
-                /> */}
-
-                <table className="table table-sm  table-bordered">
-                    <thead >
-                        <tr>
-                            <th>Id</th>
-                            <th>First name</th>
-                            <th>Last name</th>
-                            <th>Gender</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.slice((nextPage - rows), nextPage).map((item, id) =>
-                            <tr key={item.id} >
-                                <td width="20%">{item.id}</td>
-                                <td width="40%">{item.first_name}</td>
-                                <td width="40%">{item.last_name}</td>
-                                <td width="20%">{item.gender}</td>
-                            </tr>
-
-                        )}
-                    </tbody>
-                </table>
-                <nav aria-label="Page navigation example">
-                    <ul className="pagination justify-content-center">
-                        <li className="page-item">
-                            <a className="page-link" onClick={this.previousPage} tabIndex="-1">Previous</a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" onClick={this.nextPage} tabIndex="-1">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-
-            </div>
-        );
-    }
+    return (
+      <div>
+        <div className="customer">
+          {deleteIcon}
+          <MaterialDatatable
+            title="Customers"
+            data={tabledata}
+            columns={columns}
+            options={options}
+          />
+        </div>
+      </div>
+    );
+  }
 }
-// export default Project;
-

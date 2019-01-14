@@ -1,24 +1,42 @@
-import React, { Component } from 'react';
-import TestHeader from '../../components/TestHeader';
-import Header from '../../components/Layout/header';
+import React from 'react';
+import {
+  Card, Button, CardHeader, CardFooter, CardBody,
+  CardTitle, CardText
+} from 'reactstrap';
 import Content from '../../components/Layout/content';
-import SiderBar from '../../components/Layout/sidebar';
-import Footer from '../../components/Layout/footer';
-import '../../components/Layout/sidebar.less';
-export default class Page_first extends Component {
 
-    render() {
+export default function Dashboard() {
+  return (
+    <div id="cont">
+      {/* <Content />; */}
 
-        return (
-            <div>
-                <Header {...this.props} />
-                <Content />
-                <SiderBar {...this.props} />
-                <Footer />
-                {/* <TestHeader {...this.props} /> */}
+      <div>
+        <Card>
+          <CardHeader>Header</CardHeader>
+          <CardBody>
+            <CardTitle>Special Title Treatment</CardTitle>
+            <CardText>
+              With supporting text below as a natural lead-in to additional
+              content.
+            </CardText>
+            <Button>Go somewhere</Button>
+          </CardBody>
+          <CardFooter>Footer</CardFooter>
+        </Card>
 
-            </div>
-
-        )
-    }
+        <Card>
+          <CardHeader tag="h3">Featured</CardHeader>
+          <CardBody>
+            <CardTitle>Special Title Treatment</CardTitle>
+            <CardText>
+              With supporting text below as a natural lead-in to additional
+              content.
+            </CardText>
+            <Button>Go somewhere</Button>
+          </CardBody>
+          <CardFooter className="text-muted">Footer</CardFooter>
+        </Card>
+      </div>
+    </div>
+  );
 }
